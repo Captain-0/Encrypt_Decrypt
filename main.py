@@ -9,8 +9,12 @@ def encrypt():
 
     if password == "admin":
         screen1 = Toplevel(screen)
+        image_icon1 = PhotoImage(file="image/clipart4805.png")
+        screen1.iconphoto(False, image_icon1)
+
         screen1.title("ENCRYPTION")
         screen1.geometry("400x200")
+
         screen1.configure(bg='black')
 
         message = text1.get(1.0, END)
@@ -31,10 +35,35 @@ def encrypt():
         messagebox.showerror("encryption", "Invalid Secret Key")
 
 
-
-
 def decrypt():
-    pass
+    password = code.get()
+
+    if password == "admin":
+        screen2 = Toplevel(screen)
+
+        image_icon2 = PhotoImage(file="image/clipart3815.png")
+        screen2.iconphoto(False, image_icon2)
+
+        screen2.title("DECRYPTION")
+        screen2.geometry("400x200")
+        screen2.configure(bg='black')
+
+        message = text1.get(1.0, END)
+        decode_message = message.encode("ascii")
+        base64_bytes = base64.b64decode(decode_message)
+        decrypt = base64_bytes.decode("ascii")
+
+        Label(screen2, text="DECRYPT", font="arial", fg="black", bg='gray').place(x=10, y=0)
+        text2 = Text(screen2, font="Robote 10", bg="white", relief=GROOVE, wrap=WORD, bd=0)
+        text2.place(x=10, y=40, width=380, height=150)
+
+        text2.insert(END, decrypt)
+
+    elif password == '':
+        messagebox.showerror("decryption", "Input Secret Key")
+
+    elif password != "admin":
+        messagebox.showerror("decryption", "Invalid Secret Key")
 
 
 def main_screen():
