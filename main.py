@@ -22,6 +22,9 @@ def main_screen():
     code = StringVar()
     Entry(textvariable=code, width=20, bd=0, font=('arial', 25), show="*").place(x=10, y=200)
 
+    Button(text="ENCRYPT", height='2', width=23, bg='white', fg='black', bd=0).place(x=10, y=253)
+    Button(text="DECRYPT", height='2', width=23, bg="black", fg='white', bd=0).place(x=200, y=253)
+
     screen.mainloop()
 
 
